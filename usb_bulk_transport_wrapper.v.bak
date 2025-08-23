@@ -1,0 +1,88 @@
+module usb_bulk_transport_wrapper (
+    input wire clk,
+    input wire reset,
+    input wire start_transfer,
+    input wire direction, // 0 = OUT, 1 = IN
+    input wire [7:0] data_in,
+    output reg [7:0] data_out,
+    output reg data_valid,
+    output reg done,
+    input wire [7:0] cbw [0:31]
+);
+
+    reg [4:0] state;
+    integer index;
+
+    localparam IDLE = 0,
+               SEND_CBW = 1,
+               DATA_IN = 2,
+               DATA_OUT = 3,
+               RECV_CSW = 4,
+               DONE = 5;
+
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
+            state <= IDLE;
+            index <= 0;
+            done <= 0;
+        end else begin
+            case (state)
+                IDLE: begin
+                    if (start_transfer) begin
+                        index <= 0;
+                        state <= SEND_CBW;
+                    end
+                end
+                SEND_CBW: begin
+                    // Send Command Block Wrapper
+                    if (index < 31) begin
+                        data_out <= cbw[index];
+                        data_valid <= 1;
+                        index <= index + 1;
+                    end else begin
+                        data_valid <= 0;
+                        state <= direction ? DATA_IN : DATA_OUT;
+                        index <= 0;
+                    end
+                end
+                DATA_IN: begin
+                    // Receive data from device
+                    data_out <= 8'hZZ; // Placeholder
+                    data_valid <= 1;
+                    if (index == 255) begin
+                        index <= 0;
+                        state <= RECV_CSW;
+                    end else begin
+                        index <= index + 1;
+                    end
+                end
+                DATA_OUT: begin
+                    // Send data to device
+                    data_out <= data_in; // Assume externally changes
+                    data_valid <= 1;
+                    if (index == 255) begin
+                        data_valid <= 0;
+                        state <= RECV_CSW;
+                    end else begin
+                        index <= index + 1;
+                    end
+                end
+                RECV_CSW: begin
+                    // Receive Command Status Wrapper (13 bytes)
+                    data_out <= 8'hZZ;
+                    data_valid <= 1;
+                    if (index == 12) begin
+                        state <= DONE;
+                    end else begin
+                        index <= index + 1;
+                    end
+                end
+                DONE: begin
+                    done <= 1;
+                    state <= IDLE;
+                end
+            endcase
+        end
+    end
+
+endmodule

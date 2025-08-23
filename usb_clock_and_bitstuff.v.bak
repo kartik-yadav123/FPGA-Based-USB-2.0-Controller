@@ -1,0 +1,52 @@
+module usb_clock_and_bitstuff (
+    input wire clk,
+    input wire reset,
+    input wire nrzi_in,
+    output reg [7:0] byte_out,
+    output reg valid_out
+);
+
+    reg prev;
+    reg [7:0] shift;
+    reg [2:0] bit_cnt;
+    reg [2:0] one_count;
+
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
+            prev <= 1;
+            shift <= 0;
+            bit_cnt <= 0;
+            one_count <= 0;
+            valid_out <= 0;
+        end else begin
+            // NRZI decode
+            if (nrzi_in == prev)
+                shift <= {shift[6:0], 1'b0};
+            else
+                shift <= {shift[6:0], 1'b1};
+            prev <= nrzi_in;
+
+            if (shift[0] == 1)
+                one_count <= one_count + 1;
+            else
+                one_count <= 0;
+
+            // Remove bit-stuffing
+            if (one_count == 6) begin
+                one_count <= 0;
+                // Skip this bit
+            end else begin
+                bit_cnt <= bit_cnt + 1;
+            end
+
+            if (bit_cnt == 7) begin
+                byte_out <= shift;
+                valid_out <= 1;
+                bit_cnt <= 0;
+            end else begin
+                valid_out <= 0;
+            end
+        end
+    end
+
+endmodule
