@@ -1,0 +1,179 @@
+<svg viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1000" height="700" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="500" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#2c3e50">
+    USB 3300 ULPI PHY to FPGA Connection Diagram
+  </text>
+  
+  <!-- FPGA Board -->
+  <g>
+    <rect x="50" y="100" width="300" height="450" fill="#3498db" stroke="#2980b9" stroke-width="3" rx="10"/>
+    <text x="200" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">
+      FPGA Board
+    </text>
+    <text x="200" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">
+      (Cyclone IV/V, Artix-7, etc.)
+    </text>
+    
+    <!-- FPGA Pins -->
+    <rect x="320" y="180" width="80" height="30" fill="#e74c3c" stroke="#c0392b" stroke-width="2"/>
+    <text x="360" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">CLK_50MHz</text>
+    
+    <rect x="320" y="220" width="80" height="30" fill="#e74c3c" stroke="#c0392b" stroke-width="2"/>
+    <text x="360" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">RESET_N</text>
+    
+    <rect x="320" y="260" width="80" height="120" fill="#9b59b6" stroke="#8e44ad" stroke-width="2"/>
+    <text x="360" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">ULPI_DATA</text>
+    <text x="360" y="295" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">[7:0]</text>
+    <text x="360" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">D0-D7</text>
+    <text x="360" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Bidirectional</text>
+    <text x="360" y="345" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Data Bus</text>
+    
+    <rect x="320" y="390" width="80" height="30" fill="#f39c12" stroke="#d68910" stroke-width="2"/>
+    <text x="360" y="410" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">ULPI_DIR</text>
+    
+    <rect x="320" y="430" width="80" height="30" fill="#f39c12" stroke="#d68910" stroke-width="2"/>
+    <text x="360" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">ULPI_NXT</text>
+    
+    <rect x="320" y="470" width="80" height="30" fill="#27ae60" stroke="#229954" stroke-width="2"/>
+    <text x="360" y="490" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">ULPI_STP</text>
+    
+    <rect x="320" y="510" width="80" height="30" fill="#27ae60" stroke="#229954" stroke-width="2"/>
+    <text x="360" y="530" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">ULPI_CLK</text>
+  </g>
+  
+  <!-- USB 3300 Board -->
+  <g>
+    <rect x="600" y="100" width="300" height="450" fill="#2ecc71" stroke="#27ae60" stroke-width="3" rx="10"/>
+    <text x="750" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">
+      USB 3300 ULPI PHY
+    </text>
+    <text x="750" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">
+      Breakout Board
+    </text>
+    
+    <!-- USB 3300 Pins -->
+    <rect x="520" y="180" width="80" height="30" fill="#e74c3c" stroke="#c0392b" stroke-width="2"/>
+    <text x="560" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">CLK (60MHz)</text>
+    
+    <rect x="520" y="220" width="80" height="30" fill="#e74c3c" stroke="#c0392b" stroke-width="2"/>
+    <text x="560" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">RESETB</text>
+    
+    <rect x="520" y="260" width="80" height="120" fill="#9b59b6" stroke="#8e44ad" stroke-width="2"/>
+    <text x="560" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">DATA[7:0]</text>
+    <text x="560" y="295" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Bidirectional</text>
+    <text x="560" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">8-bit</text>
+    <text x="560" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">ULPI Bus</text>
+    
+    <rect x="520" y="390" width="80" height="30" fill="#f39c12" stroke="#d68910" stroke-width="2"/>
+    <text x="560" y="410" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">DIR</text>
+    
+    <rect x="520" y="430" width="80" height="30" fill="#f39c12" stroke="#d68910" stroke-width="2"/>
+    <text x="560" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">NXT</text>
+    
+    <rect x="520" y="470" width="80" height="30" fill="#27ae60" stroke="#229954" stroke-width="2"/>
+    <text x="560" y="490" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">STP</text>
+    
+    <rect x="520" y="510" width="80" height="30" fill="#27ae60" stroke="#229954" stroke-width="2"/>
+    <text x="560" y="530" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">CLK60</text>
+    
+    <!-- USB Connector -->
+    <rect x="720" y="280" width="60" height="80" fill="#34495e" stroke="#2c3e50" stroke-width="2"/>
+    <text x="750" y="305" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">USB</text>
+    <text x="750" y="320" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Type-A</text>
+    <text x="750" y="335" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Port</text>
+  </g>
+  
+  <!-- Connection Lines -->
+  <!-- Clock -->
+  <line x1="400" y1="195" x2="520" y2="195" stroke="#e74c3c" stroke-width="3"/>
+  <text x="460" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#e74c3c" font-weight="bold">50MHz Input</text>
+  
+  <!-- Reset -->
+  <line x1="400" y1="235" x2="520" y2="235" stroke="#e74c3c" stroke-width="3"/>
+  <text x="460" y="255" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#e74c3c" font-weight="bold">Reset</text>
+  
+  <!-- Data Bus -->
+  <line x1="400" y1="320" x2="520" y2="320" stroke="#9b59b6" stroke-width="5"/>
+  <text x="460" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#9b59b6" font-weight="bold">8-bit Data Bus</text>
+  
+  <!-- DIR -->
+  <line x1="400" y1="405" x2="520" y2="405" stroke="#f39c12" stroke-width="3"/>
+  <text x="460" y="400" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#f39c12" font-weight="bold">Direction</text>
+  
+  <!-- NXT -->
+  <line x1="400" y1="445" x2="520" y2="445" stroke="#f39c12" stroke-width="3"/>
+  <text x="460" y="465" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#f39c12" font-weight="bold">Next</text>
+  
+  <!-- STP -->
+  <line x1="400" y1="485" x2="520" y2="485" stroke="#27ae60" stroke-width="3"/>
+  <text x="460" y="505" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#27ae60" font-weight="bold">Stop</text>
+  
+  <!-- CLK60 -->
+  <line x1="400" y1="525" x2="520" y2="525" stroke="#27ae60" stroke-width="3"/>
+  <text x="460" y="545" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#27ae60" font-weight="bold">60MHz Clock</text>
+  
+  <!-- Power and Ground Section -->
+  <g>
+    <rect x="50" y="580" width="850" height="100" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="2" rx="5"/>
+    <text x="475" y="605" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2c3e50">
+      Power Supply Connections
+    </text>
+    
+    <!-- Power connections -->
+    <circle cx="150" cy="640" r="15" fill="#e74c3c"/>
+    <text x="150" y="645" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" font-weight="bold">3.3V</text>
+    <text x="150" y="665" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#2c3e50">FPGA 3.3V</text>
+    
+    <line x1="180" y1="640" x2="320" y2="640" stroke="#e74c3c" stroke-width="3"/>
+    
+    <circle cx="350" cy="640" r="15" fill="#e74c3c"/>
+    <text x="350" y="645" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" font-weight="bold">3.3V</text>
+    <text x="350" y="665" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#2c3e50">USB3300 VDD</text>
+    
+    <circle cx="550" cy="640" r="15" fill="#34495e"/>
+    <text x="550" y="645" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" font-weight="bold">GND</text>
+    <text x="550" y="665" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#2c3e50">Common Ground</text>
+    
+    <line x1="380" y1="640" x2="520" y2="640" stroke="#34495e" stroke-width="3"/>
+    
+    <circle cx="750" cy="640" r="15" fill="#f39c12"/>
+    <text x="750" y="645" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" font-weight="bold">5V</text>
+    <text x="750" y="665" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#2c3e50">USB VBUS</text>
+  </g>
+  
+  <!-- Signal Direction Indicators -->
+  <g>
+    <!-- Input arrows -->
+    <polygon points="510,195 520,190 520,200" fill="#e74c3c"/>
+    <polygon points="510,235 520,230 520,240" fill="#e74c3c"/>
+    <polygon points="510,405 520,400 520,410" fill="#f39c12"/>
+    <polygon points="510,445 520,440 520,450" fill="#f39c12"/>
+    
+    <!-- Output arrows -->
+    <polygon points="410,485 400,480 400,490" fill="#27ae60"/>
+    <polygon points="410,525 400,520 400,530" fill="#27ae60"/>
+  </g>
+  
+  <!-- Legend -->
+  <g>
+    <rect x="750" y="380" width="140" height="120" fill="white" stroke="#bdc3c7" stroke-width="1" rx="5"/>
+    <text x="820" y="400" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">
+      Signal Types
+    </text>
+    
+    <rect x="760" y="410" width="15" height="10" fill="#e74c3c"/>
+    <text x="785" y="420" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50">Clock/Reset</text>
+    
+    <rect x="760" y="430" width="15" height="10" fill="#9b59b6"/>
+    <text x="785" y="440" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50">Data Bus</text>
+    
+    <rect x="760" y="450" width="15" height="10" fill="#f39c12"/>
+    <text x="785" y="460" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50">Control Inputs</text>
+    
+    <rect x="760" y="470" width="15" height="10" fill="#27ae60"/>
+    <text x="785" y="480" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50">Control Outputs</text>
+  </g>
+</svg>
