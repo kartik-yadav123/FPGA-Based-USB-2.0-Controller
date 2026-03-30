@@ -1,0 +1,34 @@
+Isochronous IN Transfer Simulation
+
+%%{init: {'theme': 'base', 'themeVariables': { 'fontFamily': 'Courier New', 'fontSize': '14px'}}}%%
+sequenceDiagram
+    participant Host
+    participant Protocol_Engine
+    participant UTMI_Interface
+    
+    Note over Host, UTMI_Interface: [Simulation Start: IN Token Received]
+    Host->>Protocol_Engine: Token (PID: IN, ADDR: 0x01, ENDP: 0x1)
+    Note right of Protocol_Engine: Decode Token PID [cite: 198]
+    Protocol_Engine->>Protocol_Engine: Read EP_CSR (IN Type) [cite: 253]
+    Protocol_Engine->>UTMI_Interface: tx_valid = 1, data = SYNC
+    Protocol_Engine->>UTMI_Interface: data = DATA0 PID [cite: 197]
+    Note right of Protocol_Engine: Assembling Packet... [cite: 197]
+    Protocol_Engine->>UTMI_Interface: data = Payload (from SSRAM)
+    Protocol_Engine->>UTMI_Interface: data = CRC16
+    UTMI_Interface-->>Host: [Packet Transmitted]
+
+Bulk OUT Transfer Simulation
+
+%%{init: {'theme': 'base', 'themeVariables': { 'fontFamily': 'Courier New', 'fontSize': '14px'}}}%%
+sequenceDiagram
+    participant Host
+    participant Packet_Disassembly
+    participant Protocol_Engine
+    
+    Host->>Packet_Disassembly: rx_active=1, data = SYNC + DATA0 PID
+    Packet_Disassembly->>Protocol_Engine: Valid Data PID Detected [cite: 198]
+    Host->>Packet_Disassembly: rx_data = [Payload Bytes]
+    Packet_Disassembly->>Protocol_Engine: PID + Data extracted (CRC ignored) [cite: 199]
+    Note over Protocol_Engine: Check Buffer Space [cite: 261]
+    Protocol_Engine->>Host: tx_valid=1, data = ACK PID [cite: 197]
+    Note over Protocol_Engine: Interrupt: Buffer 0 Full [cite: 269]
