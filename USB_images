@@ -1,4 +1,3 @@
-Isochronous IN Transfer Simulation
 
 %%{init: {'theme': 'base', 'themeVariables': { 'fontFamily': 'Courier New', 'fontSize': '14px'}}}%%
 sequenceDiagram
@@ -17,7 +16,6 @@ sequenceDiagram
     Protocol_Engine->>UTMI_Interface: data = CRC16
     UTMI_Interface-->>Host: [Packet Transmitted]
 
-Bulk OUT Transfer Simulation
 
 %%{init: {'theme': 'base', 'themeVariables': { 'fontFamily': 'Courier New', 'fontSize': '14px'}}}%%
 sequenceDiagram
