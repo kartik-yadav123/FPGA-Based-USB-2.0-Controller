@@ -70,4 +70,4 @@ The controller is divided into the following major blocks:
 
 ---
 
-## 📁 Repository Structure
+
