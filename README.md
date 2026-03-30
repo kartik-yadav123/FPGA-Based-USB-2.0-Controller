@@ -70,4 +70,18 @@ The controller is divided into the following major blocks:
 
 ---
 
+```mermaid
+flowchart TD
+    Start([Idle / Wait for Token]) --> Recv[Receive & Decode Token]
+    Recv --> CheckType{Token Type?}
+    
+    CheckType -- IN --> IN_Cycle[IN Data Cycle: Device to Host]
+    CheckType -- OUT --> OUT_Cycle[OUT Data Cycle: Host to Device]
+    CheckType -- SOF/PING --> Special[Special Token Processing]
+    
+    IN_Cycle --> Update[Toggle PID & Update Buffer]
+    OUT_Cycle --> Update
+    Update --> Start
+```
+
 
